@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{97FEC037-619E-4646-B31D-7927057332B6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MAD</RootNamespace>
+    <AssemblyName>MAD</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Cassandra, Version=3.99.0.0, Culture=neutral, PublicKeyToken=10b231fbfc8c4b4d, processorArchitecture=MSIL">
+      <HintPath>..\packages\CassandraCSharpDriver.3.17.1\lib\net452\Cassandra.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2, Version=2.0.3.1, Culture=neutral, PublicKeyToken=e4b9cdd7b4cde4b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.3.1\lib\net40\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.1.11\lib\net46\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.1.0.0\lib\netstandard1.1\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.1.0.0\lib\netstandard1.1\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.6.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Linq, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.4.1.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq.Expressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Expressions.4.1.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.4.1.0\lib\net462\System.Reflection.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.1.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.1.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.4.1.0\lib\net462\System.Runtime.InteropServices.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.6.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.6.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Dataflow.4.6.0\lib\netstandard1.1\System.Threading.Tasks.Dataflow.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Add_empresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add_empresa.Designer.cs">
+      <DependentUpon>Add_empresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\datos_colaborador.cs" />
+    <Compile Include="Clases\datos_colaborador2.cs" />
+    <Compile Include="Clases\Datos_deduccion.cs" />
+    <Compile Include="Clases\Datos_departamento.cs" />
+    <Compile Include="Clases\Datos_empresa.cs" />
+    <Compile Include="Clases\Datos_empresa2.cs" />
+    <Compile Include="Clases\Datos_pers.cs" />
+    <Compile Include="Clases\Datos_puesto.cs" />
+    <Compile Include="Clases\Deducciones.cs" />
+    <Compile Include="Clases\Percepciones.cs" />
+    <Compile Include="Clases\useradmin.cs" />
+    <Compile Include="contenedoresHome\HOME_adddepartamento.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedoresHome\HOME_adddepartamento.Designer.cs">
+      <DependentUpon>HOME_adddepartamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedoresHome\HOME_addpuesto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedoresHome\HOME_addpuesto.Designer.cs">
+      <DependentUpon>HOME_addpuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedoresHome\HOME_home.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedoresHome\HOME_home.Designer.cs">
+      <DependentUpon>HOME_home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedoresNominas\Deducciones.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedoresNominas\Deducciones.Designer.cs">
+      <DependentUpon>Deducciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedoresNominas\Generar_nominas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedoresNominas\Generar_nominas.Designer.cs">
+      <DependentUpon>Generar_nominas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedoresNominas\Percepciones.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedoresNominas\Percepciones.Designer.cs">
+      <DependentUpon>Percepciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedoresWC\WC_DatosPersonales.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedoresWC\WC_DatosPersonales.Designer.cs">
+      <DependentUpon>WC_DatosPersonales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedoresWC\WC_inicio.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedoresWC\WC_inicio.Designer.cs">
+      <DependentUpon>WC_inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedoresWC\WC_nominas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedoresWC\WC_nominas.Designer.cs">
+      <DependentUpon>WC_nominas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedores\Colaboradores.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedores\Colaboradores.Designer.cs">
+      <DependentUpon>Colaboradores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedores\Inicio.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedores\Inicio.Designer.cs">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedores\Nominas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedores\Nominas.Designer.cs">
+      <DependentUpon>Nominas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedores\reportes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedores\reportes.Designer.cs">
+      <DependentUpon>reportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedores_colaborador\Alta_Colaboradores.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedores_colaborador\Alta_Colaboradores.Designer.cs">
+      <DependentUpon>Alta_Colaboradores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedores_colaborador\Baja_Colaborador.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedores_colaborador\Baja_Colaborador.Designer.cs">
+      <DependentUpon>Baja_Colaborador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedores_colaborador\Update_Colaborador.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedores_colaborador\Update_Colaborador.Designer.cs">
+      <DependentUpon>Update_Colaborador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedores_departamento\CONT_DEP_crear.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedores_departamento\CONT_DEP_crear.Designer.cs">
+      <DependentUpon>CONT_DEP_crear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedores_departamento\CONT_DEP_delete.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedores_departamento\CONT_DEP_delete.Designer.cs">
+      <DependentUpon>CONT_DEP_delete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedores_departamento\CONT_DEP_up_del.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedores_departamento\CONT_DEP_up_del.Designer.cs">
+      <DependentUpon>CONT_DEP_up_del.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedores_login\empresas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedores_login\empresas.Designer.cs">
+      <DependentUpon>empresas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedores_login\Error_empresa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedores_login\Error_empresa.Designer.cs">
+      <DependentUpon>Error_empresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedores_login\login.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedores_login\login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedores_puesto\PST_CONT_crear.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedores_puesto\PST_CONT_crear.Designer.cs">
+      <DependentUpon>PST_CONT_crear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedores_puesto\PST_CONT_del.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedores_puesto\PST_CONT_del.Designer.cs">
+      <DependentUpon>PST_CONT_del.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedores_puesto\PST_CONT_updel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedores_puesto\PST_CONT_updel.Designer.cs">
+      <DependentUpon>PST_CONT_updel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedor_ded\DED_CONT_alta.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedor_ded\DED_CONT_alta.Designer.cs">
+      <DependentUpon>DED_CONT_alta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedor_ded\DED_CONT_delete.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedor_ded\DED_CONT_delete.Designer.cs">
+      <DependentUpon>DED_CONT_delete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedor_ded\DED_CONT_update.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedor_ded\DED_CONT_update.Designer.cs">
+      <DependentUpon>DED_CONT_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedor_pers\PERS_CONT_alta.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedor_pers\PERS_CONT_alta.Designer.cs">
+      <DependentUpon>PERS_CONT_alta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedor_pers\PERS_CONT_delete.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedor_pers\PERS_CONT_delete.Designer.cs">
+      <DependentUpon>PERS_CONT_delete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contenedor_pers\PERS_CONT_modificar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contenedor_pers\PERS_CONT_modificar.Designer.cs">
+      <DependentUpon>PERS_CONT_modificar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnlaceCassandra.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nominas\CONT_DLT_nomina.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Nominas\CONT_DLT_nomina.Designer.cs">
+      <DependentUpon>CONT_DLT_nomina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nominas\CONT_GNR_nomina.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Nominas\CONT_GNR_nomina.Designer.cs">
+      <DependentUpon>CONT_GNR_nomina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nominas\CONT_VRFC_nomina.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Nominas\CONT_VRFC_nomina.Designer.cs">
+      <DependentUpon>CONT_VRFC_nomina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="statics.cs" />
+    <Compile Include="WindowColaborador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowColaborador.Designer.cs">
+      <DependentUpon>WindowColaborador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window_login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window_login.Designer.cs">
+      <DependentUpon>Window_login.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Add_empresa.resx">
+      <DependentUpon>Add_empresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedoresHome\HOME_adddepartamento.resx">
+      <DependentUpon>HOME_adddepartamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedoresHome\HOME_addpuesto.resx">
+      <DependentUpon>HOME_addpuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedoresHome\HOME_home.resx">
+      <DependentUpon>HOME_home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedoresNominas\Deducciones.resx">
+      <DependentUpon>Deducciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedoresNominas\Generar_nominas.resx">
+      <DependentUpon>Generar_nominas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedoresNominas\Percepciones.resx">
+      <DependentUpon>Percepciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedoresWC\WC_DatosPersonales.resx">
+      <DependentUpon>WC_DatosPersonales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedoresWC\WC_inicio.resx">
+      <DependentUpon>WC_inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedoresWC\WC_nominas.resx">
+      <DependentUpon>WC_nominas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedores\Colaboradores.resx">
+      <DependentUpon>Colaboradores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedores\Inicio.resx">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedores\Nominas.resx">
+      <DependentUpon>Nominas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedores\reportes.resx">
+      <DependentUpon>reportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedores_colaborador\Alta_Colaboradores.resx">
+      <DependentUpon>Alta_Colaboradores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedores_colaborador\Baja_Colaborador.resx">
+      <DependentUpon>Baja_Colaborador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedores_colaborador\Update_Colaborador.resx">
+      <DependentUpon>Update_Colaborador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedores_departamento\CONT_DEP_crear.resx">
+      <DependentUpon>CONT_DEP_crear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedores_departamento\CONT_DEP_delete.resx">
+      <DependentUpon>CONT_DEP_delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedores_departamento\CONT_DEP_up_del.resx">
+      <DependentUpon>CONT_DEP_up_del.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedores_login\empresas.resx">
+      <DependentUpon>empresas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedores_login\Error_empresa.resx">
+      <DependentUpon>Error_empresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedores_login\login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedores_puesto\PST_CONT_crear.resx">
+      <DependentUpon>PST_CONT_crear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedores_puesto\PST_CONT_del.resx">
+      <DependentUpon>PST_CONT_del.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedores_puesto\PST_CONT_updel.resx">
+      <DependentUpon>PST_CONT_updel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedor_ded\DED_CONT_alta.resx">
+      <DependentUpon>DED_CONT_alta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedor_ded\DED_CONT_delete.resx">
+      <DependentUpon>DED_CONT_delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedor_ded\DED_CONT_update.resx">
+      <DependentUpon>DED_CONT_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedor_pers\PERS_CONT_alta.resx">
+      <DependentUpon>PERS_CONT_alta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedor_pers\PERS_CONT_delete.resx">
+      <DependentUpon>PERS_CONT_delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contenedor_pers\PERS_CONT_modificar.resx">
+      <DependentUpon>PERS_CONT_modificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nominas\CONT_DLT_nomina.resx">
+      <DependentUpon>CONT_DLT_nomina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nominas\CONT_GNR_nomina.resx">
+      <DependentUpon>CONT_GNR_nomina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nominas\CONT_VRFC_nomina.resx">
+      <DependentUpon>CONT_VRFC_nomina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="WindowColaborador.resx">
+      <DependentUpon>WindowColaborador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window_login.resx">
+      <DependentUpon>Window_login.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\icon_logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CQL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
